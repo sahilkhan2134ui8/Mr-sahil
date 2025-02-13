@@ -3,143 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Story ❤️</title>
+    <title>Our Love Journey ❤️</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #000428, #004e92);
             text-align: center;
             color: white;
-            padding: 20px;
-            overflow-x: hidden;
+            transition: all 0.5s ease-in-out;
         }
-
         .container {
             max-width: 600px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
-            animation: fadeIn 2s ease-in-out;
         }
-
-        h1 {
-            font-size: 32px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-
-        .info {
-            font-size: 20px;
-            margin: 10px 0;
-            opacity: 0.9;
-        }
-
-        .timer {
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 10px;
-            padding: 10px;
+        .section {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
             background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+        .section:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
             border-radius: 10px;
             display: inline-block;
+            margin-top: 10px;
         }
-
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+        .button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
         }
-
-        .gallery img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 15px;
-            transition: transform 0.4s, box-shadow 0.4s;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        #theme-selector {
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
         }
-
-        .gallery img:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        /* Themes */
+        .romantic { background: linear-gradient(to right, #ff9a9e, #fad0c4); }
+        .neon { background: linear-gradient(to right, #0f0c29, #302b63, #24243e); }
+        .classic { background: linear-gradient(to right, #e0eafc, #cfdef3); color: black; }
+        .galaxy { background: url('https://source.unsplash.com/800x600/?galaxy') no-repeat center center/cover; }
     </style>
 </head>
-<body>
+<body class="romantic">
 
     <div class="container">
-        <h1>💖 Our Love Story 💖</h1>
+        <h1>💖 Our Love Journey 💖</h1>
         
-        <p class="info">👨‍💼 <b>Sahil</b></p>
-        <p class="info">📍 <a href="https://facebook.com/your-profile" target="_blank" style="color: white; text-decoration: none;">Visit Facebook</a></p>
-        <p class="info">💑 <b>Ayman Kook</b></p>
-        <p class="info">⏳ Relationship Since: <b>1 March 2024</b></p>
-        
-        <h2>🕰 Time Together</h2>
-        <p class="timer" id="relationshipTimer">Loading...</p>
+        <!-- Theme Selector -->
+        <select id="theme-selector" onchange="changeTheme()">
+            <option value="romantic">Romantic</option>
+            <option value="neon">Neon</option>
+            <option value="classic">Classic</option>
+            <option value="galaxy">Galaxy</option>
+        </select>
 
-        <h2>📸 Our Memories</h2>
-        <div class="gallery" id="imageGallery">
-            <!-- Images Auto Load Hogi -->
-        </div>
+        <!-- Relationship Info -->
+        <h2>💑 Relationship Details</h2>
+        <p><b>Name:</b> Sahil</p>
+        <p><b>Relationship With:</b> Ayman Kook</p>
+        <p><b>Started On:</b> 1 March 2024</p>
+        <p class="timer" id="relationshipTimer">⏳ Counting Days...</p>
 
-        <p class="footer">💖 Made with Love by Sahil 💖</p>
+        <!-- Sections -->
+        <div class="section" onclick="openPage('sahil')">👦 Sahil's Details</div>
+        <div class="section" onclick="openPage('ayman')">👩 Ayman's Details</div>
+        <div class="section" onclick="openPage('memories')">📸 Our Memories</div>
+
+        <!-- Music Player -->
+        <button class="button" onclick="playMusic()">🎵 Play Music</button>
+        <button class="button" onclick="nextMusic()">⏭ Next Song</button>
     </div>
 
-    <!-- Background Music -->
-    <iframe id="bg-music" style="display:none;" src="https://www.youtube.com/embed/2p1-n3PgtCk?autoplay=1&loop=1&playlist=2p1-n3PgtCk" allow="autoplay"></iframe>
+    <!-- Music Source -->
+    <audio id="musicPlayer" autoplay loop></audio>
 
     <script>
-        function updateRelationshipTimer() {
-            const startDate = new Date("March 1, 2024 00:00:00").getTime();
-            setInterval(function() {
-                const now = new Date().getTime();
-                const difference = now - startDate;
+        // Relationship Timer
+        function updateRelationshipTime() {
+            let startDate = new Date("2024-03-01");
+            let now = new Date();
+            let diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+            document.getElementById("relationshipTimer").innerText = `💖 Together for ${diff} days!`;
+        }
+        updateRelationshipTime();
 
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById("relationshipTimer").innerHTML = 
-                    `${days} Days, ${hours} Hours, ${minutes} Min, ${seconds} Sec`;
-            }, 1000);
+        // Open New Page
+        function openPage(page) {
+            let url = page + ".html";
+            window.location.href = url;
         }
 
-        updateRelationshipTimer();
+        // Change Theme
+        function changeTheme() {
+            let theme = document.getElementById("theme-selector").value;
+            document.body.className = theme;
+        }
 
-        const imageFolder = 'founder/';
-        const totalImages = 10;
-        const galleryDiv = document.getElementById('imageGallery');
+        // Music Player
+        let songs = [
+            "https://www.mboxdrive.com/atif-aslam.mp3",
+            "https://www.mboxdrive.com/romantic-song.mp3"
+        ];
+        let songIndex = 0;
+        let player = document.getElementById("musicPlayer");
 
-        for (let i = 1; i <= totalImages; i++) {
-            let img = document.createElement('img');
-            img.src = `${imageFolder}dp${i}.png`;  
-            img.alt = `Memory ${i}`;
-            galleryDiv.appendChild(img);
+        function playMusic() {
+            player.src = songs[songIndex];
+            player.play();
+        }
+
+        function nextMusic() {
+            songIndex = (songIndex + 1) % songs.length;
+            player.src = songs[songIndex];
+            player.play();
         }
     </script>
 
