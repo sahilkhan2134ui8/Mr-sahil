@@ -8,25 +8,29 @@
 </head>
 <body>
 
+    <!-- Night Sky Animation -->
     <div class="background">
         <div class="stars"></div>
+        <div class="shooting-stars"></div>
     </div>
 
+    <!-- Relationship Details Box -->
     <div class="details-box">
         <h1>💑 Sahil & Ayman</h1>
         <p><strong>Relationship Since:</strong> 1st March 2024</p>
         <p><strong>Time Together:</strong> <span id="timer"></span></p>
-
-        <button onclick="window.location.href='sahil.html'">👨‍💻 Sahil’s Details</button>
-        <button onclick="window.location.href='ayman.html'">👩‍❤️‍👨 Ayman’s Details</button>
-        <button onclick="window.location.href='memories.html'">📸 Our Memories</button>
+        
+        <button onclick="window.location.href='sahil.html'">Sahil's Details</button>
+        <button onclick="window.location.href='ayman.html'">Ayman's Details</button>
+        <button onclick="window.location.href='memories.html'">📸 Memories</button>
     </div>
 
+    <!-- Music Player -->
     <div class="music-player">
         <audio id="musicPlayer" autoplay loop>
             <source src="music/lofi.mp3" type="audio/mpeg">
         </audio>
-        <button onclick="toggleMusic()"> Play/Pause</button>
+        <button onclick="toggleMusic()">🔊 Play/Pause</button>
     </div>
 
     <script src="script.js"></script>
