@@ -3,140 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Journey ❤️</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            color: white;
-            transition: all 0.5s ease-in-out;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-        .section {
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: 0.3s ease-in-out;
-        }
-        .section:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .timer {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s ease-in-out;
-        }
-        #theme-selector {
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Themes */
-        .romantic { background: linear-gradient(to right, #ff9a9e, #fad0c4); }
-        .neon { background: linear-gradient(to right, #0f0c29, #302b63, #24243e); }
-        .classic { background: linear-gradient(to right, #e0eafc, #cfdef3); color: black; }
-        .galaxy { background: url('https://source.unsplash.com/800x600/?galaxy') no-repeat center center/cover; }
-    </style>
+    <title>Our Love Story ❤️</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="romantic">
+<body>
 
-    <div class="container">
-        <h1>💖 Our Love Journey 💖</h1>
-        
-        <!-- Theme Selector -->
-        <select id="theme-selector" onchange="changeTheme()">
-            <option value="romantic">Romantic</option>
-            <option value="neon">Neon</option>
-            <option value="classic">Classic</option>
-            <option value="galaxy">Galaxy</option>
-        </select>
-
-        <!-- Relationship Info -->
-        <h2>💑 Relationship Details</h2>
-        <p><b>Name:</b> Sahil</p>
-        <p><b>Relationship With:</b> Ayman Kook</p>
-        <p><b>Started On:</b> 1 March 2024</p>
-        <p class="timer" id="relationshipTimer">⏳ Counting Days...</p>
-
-        <!-- Sections -->
-        <div class="section" onclick="openPage('sahil')">👦 Sahil's Details</div>
-        <div class="section" onclick="openPage('ayman')">👩 Ayman's Details</div>
-        <div class="section" onclick="openPage('memories')">📸 Our Memories</div>
-
-        <!-- Music Player -->
-        <button class="button" onclick="playMusic()">🎵 Play Music</button>
-        <button class="button" onclick="nextMusic()">⏭ Next Song</button>
+    <div class="background">
+        <div class="stars"></div>
     </div>
 
-    <!-- Music Source -->
-    <audio id="musicPlayer" autoplay loop></audio>
+    <div class="details-box">
+        <h1>💑 Sahil & Ayman</h1>
+        <p><strong>Relationship Since:</strong> 1st March 2024</p>
+        <p><strong>Time Together:</strong> <span id="timer"></span></p>
 
-    <script>
-        // Relationship Timer
-        function updateRelationshipTime() {
-            let startDate = new Date("2024-03-01");
-            let now = new Date();
-            let diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-            document.getElementById("relationshipTimer").innerText = `💖 Together for ${diff} days!`;
-        }
-        updateRelationshipTime();
+        <button onclick="window.location.href='sahil.html'">👨‍💻 Sahil’s Details</button>
+        <button onclick="window.location.href='ayman.html'">👩‍❤️‍👨 Ayman’s Details</button>
+        <button onclick="window.location.href='memories.html'">📸 Our Memories</button>
+    </div>
 
-        // Open New Page
-        function openPage(page) {
-            let url = page + ".html";
-            window.location.href = url;
-        }
+    <div class="music-player">
+        <audio id="musicPlayer" autoplay loop>
+            <source src="music/lofi.mp3" type="audio/mpeg">
+        </audio>
+        <button onclick="toggleMusic()"> Play/Pause</button>
+    </div>
 
-        // Change Theme
-        function changeTheme() {
-            let theme = document.getElementById("theme-selector").value;
-            document.body.className = theme;
-        }
-
-        // Music Player
-        let songs = [
-            "https://www.mboxdrive.com/atif-aslam.mp3",
-            "https://www.mboxdrive.com/romantic-song.mp3"
-        ];
-        let songIndex = 0;
-        let player = document.getElementById("musicPlayer");
-
-        function playMusic() {
-            player.src = songs[songIndex];
-            player.play();
-        }
-
-        function nextMusic() {
-            songIndex = (songIndex + 1) % songs.length;
-            player.src = songs[songIndex];
-            player.play();
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
