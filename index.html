@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #000428, #004e92);
+            text-align: center;
+            color: white;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 32px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        .info {
+            font-size: 20px;
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+
+        .timer {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💖 Our Love Story 💖</h1>
+        
+        <p class="info">👨‍💼 <b>Sahil</b></p>
+        <p class="info">📍 <a href="https://facebook.com/your-profile" target="_blank" style="color: white; text-decoration: none;">Visit Facebook</a></p>
+        <p class="info">💑 <b>Ayman Kook</b></p>
+        <p class="info">⏳ Relationship Since: <b>1 March 2024</b></p>
+        
+        <h2>🕰 Time Together</h2>
+        <p class="timer" id="relationshipTimer">Loading...</p>
+
+        <h2>📸 Our Memories</h2>
+        <div class="gallery" id="imageGallery">
+            <!-- Images Auto Load Hogi -->
+        </div>
+
+        <p class="footer">💖 Made with Love by Sahil 💖</p>
+    </div>
+
+    <!-- Background Music -->
+    <iframe id="bg-music" style="display:none;" src="https://www.youtube.com/embed/2p1-n3PgtCk?autoplay=1&loop=1&playlist=2p1-n3PgtCk" allow="autoplay"></iframe>
+
+    <script>
+        function updateRelationshipTimer() {
+            const startDate = new Date("March 1, 2024 00:00:00").getTime();
+            setInterval(function() {
+                const now = new Date().getTime();
+                const difference = now - startDate;
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("relationshipTimer").innerHTML = 
+                    `${days} Days, ${hours} Hours, ${minutes} Min, ${seconds} Sec`;
+            }, 1000);
+        }
+
+        updateRelationshipTimer();
+
+        const imageFolder = 'founder/';
+        const totalImages = 10;
+        const galleryDiv = document.getElementById('imageGallery');
+
+        for (let i = 1; i <= totalImages; i++) {
+            let img = document.createElement('img');
+            img.src = `${imageFolder}dp${i}.png`;  
+            img.alt = `Memory ${i}`;
+            galleryDiv.appendChild(img);
+        }
+    </script>
+
+</body>
+</html>
